@@ -78,7 +78,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git kubectl-autocomplete zsh-autosuggestions zsh-syntax-highlighting you-should-use zsh-bat)
+# plugins=(git kubectl-autocomplete zsh-autosuggestions zsh-syntax-highlighting you-should-use zsh-bat)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting you-should-use zsh-bat)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -125,8 +126,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # exa
 alias ls='exa --icons'
 
-alias k='kubectl'
-alias kubectl='kubecolor'
-compdef kubecolor=kubectl
+# alias k='kubectl'
+# alias kubectl='kubecolor'
+# compdef kubecolor=kubectl
 
-alias cat='ccat'
+# alias cat='ccat'
