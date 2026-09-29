@@ -1,63 +1,106 @@
 {
-  "workbench.colorTheme": "One Dark Pro",
-  "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "files.exclude": {
-      "**/.classpath": true,
-      "**/.project": true,
-      "**/.settings": true,
-      "**/.factorypath": true
-  },
-  "java.project.importOnFirstTimeStartup": "automatic",
-  "redhat.telemetry.enabled": true,
-  "explorer.confirmDelete": false,
-  "eslint.alwaysShowStatus": true,
-  "eslint.enable": true,
-  "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-  },
-  "eslint.run": "onSave",
-  "editor.formatOnSave": true,
-  "eslint.validate": ["javascript", "vue"],
-  "workbench.enableExperiments": false,
-  "files.eol": "\n",
-  "workbench.iconTheme": "vscode-icons-mac",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "diffEditor.ignoreTrimWhitespace": false,
-  // "terminal.integrated.fontFamily": "MesloLGS NF",
-  // "terminal.integrated.gpuAcceleration": "canvas",
-  //"terminal.integrated.lineHeight": 1.3,
-  "tabnine.experimentalAutoImports": true,
-  "files.autoSave": "afterDelay",
-  "jestrunner.jestCommand": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-  "bracketPairColorizer.depreciation-notice": false,
-  "security.workspace.trust.untrustedFiles": "newWindow",
-  "notebook.diff.ignoreMetadata": true,
-  "php.suggest.basic": false,
-  "php.validate.enable": false,
-  "emmet.excludeLanguages": ["markdown", "php"],
-  "terminal.integrated.defaultProfile.osx": "zsh",
-  "editor.fontSize": 15,
-  "turboConsoleLog.addSemicolonInTheEnd": true,
-  "turboConsoleLog.quote": "'",
-  "[python]": {
-      "editor.formatOnType": true
-  },
-  "git.ignoreMissingGitWarning": true,
-  "[python]": {
-      "editor.defaultFormatter": "ms-python.autopep8",
-      "editor.formatOnSave": true
-  },
-  "terraform.languageServer.enable": true,
-  "trunk.trunkGrayOutNonBlockingIssues": false,
-  "window.commandCenter": false,
-  "editor.tabSize": 2,
-  "git.confirmSync": false,
-  "gitlens.gitCommands.skipConfirmations": [
-      "fetch:command",
-      "stash-push:command",
-      "stash-rename:command"
-  ],
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  // "python.formatting.provider": "none"
+    "workbench.colorTheme": "One Dark Pro",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "java.project.importOnFirstTimeStartup": "automatic",
+    "redhat.telemetry.enabled": true,
+    "explorer.confirmDelete": false,
+    "eslint.alwaysShowStatus": true,
+    "eslint.enable": true,
+    "eslint.run": "onSave",
+    "editor.formatOnSave": true,
+    "[javascript][typescript][javascriptreact][typescriptreact]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.biome": "explicit"
+        },
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "eslint.validate": [
+        "javascript",
+        "vue"
+    ],
+    "workbench.enableExperiments": false,
+    "files.eol": "\n",
+    "workbench.iconTheme": "vscode-icons-mac",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    // "terminal.integrated.gpuAcceleration": "canvas",
+    // "terminal.integrated.lineHeight": 1.3,
+    "terminal.integrated.fontSize": 16,
+    "tabnine.experimentalAutoImports": true,
+    "files.autoSave": "afterDelay",
+    "jestrunner.jestCommand": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "bracketPairColorizer.depreciation-notice": false,
+    "security.workspace.trust.untrustedFiles": "newWindow",
+    "notebook.diff.ignoreMetadata": true,
+    "php.suggest.basic": false,
+    "php.validate.enable": false,
+    "emmet.excludeLanguages": [
+        "markdown",
+        "php"
+    ],
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "editor.fontSize": 15,
+    "turboConsoleLog.addSemicolonInTheEnd": true,
+    "turboConsoleLog.quote": "'",
+    "git.ignoreMissingGitWarning": true,
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "diffEditor.ignoreTrimWhitespace": true
+    },
+    "notebook.formatOnSave.enabled": true,
+    "notebook.codeActionsOnSave": {
+        "notebook.source.fixAll": "explicit",
+        "notebook.source.organizeImports": "explicit"
+    },
+    "terraform.languageServer.enable": true,
+    "trunk.trunkGrayOutNonBlockingIssues": false,
+    "window.commandCenter": false,
+    "editor.tabSize": 2,
+    "git.confirmSync": false,
+    "gitlens.gitCommands.skipConfirmations": [
+        "fetch:command",
+        "stash-push:command",
+        "stash-rename:command"
+    ],
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "extensions.ignoreRecommendations": true,
+    "[markdown]": {
+        "diffEditor.ignoreTrimWhitespace": false
+    },
+    "git.openRepositoryInParentFolders": "never",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmPasteNative": false,
+    "chat.viewSessions.orientation": "stacked",
+    "markdown.marp.themes": [
+        "classmethod.css"
+    ],
+    "json.schemaDownload.trustedDomains": {
+        "https://schemastore.azurewebsites.net/": true,
+        "https://raw.githubusercontent.com/": true,
+        "https://www.schemastore.org/": true,
+        "https://json.schemastore.org/": true,
+        "https://json-schema.org/": true,
+        "https://biomejs.dev": true
+    },
+    "claudeCode.preferredLocation": "panel",
+    "python.terminal.activateEnvironment": false,
+    "chat.tools.terminal.autoApprove": {
+        "npm test": true,
+        "uv": true
+    },
+    // "python.formatting.provider": "none"
 }
