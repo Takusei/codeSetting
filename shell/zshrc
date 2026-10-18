@@ -79,9 +79,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git kubectl-autocomplete zsh-autosuggestions zsh-syntax-highlighting you-should-use zsh-bat)
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting you-should-use zsh-bat)
+plugins=(git zsh-autosuggestions you-should-use zsh-bat zsh-syntax-highlighting)
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
 
@@ -118,7 +118,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # eza
-alias ls='eza --icons'
+(( $+commands[eza] )) && alias ls='eza --icons'
 
 # alias k='kubectl'
 # alias kubectl='kubecolor'
@@ -131,13 +131,13 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # . /opt/homebrew/opt/asdf/libexec/asdf.sh
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/jaycen/.docker/completions $fpath)
+[[ ! -d "$HOME/.docker/completions" ]] || fpath=("$HOME/.docker/completions" $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 
 # bun completions
-[ -s "/Users/jaycen/.bun/_bun" ] && source "/Users/jaycen/.bun/_bun"
+[[ ! -r "$HOME/.bun/_bun" ]] || source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -145,10 +145,10 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 
 
-. "$HOME/.local/bin/env"
+[[ ! -r "$HOME/.local/bin/env" ]] || source "$HOME/.local/bin/env"
 
 # OpenClaw Completion
-source "/Users/jaycen/.openclaw/completions/openclaw.zsh"
+[[ ! -r "$HOME/.openclaw/completions/openclaw.zsh" ]] || source "$HOME/.openclaw/completions/openclaw.zsh"
 
 # openAI key
 # Set OPENAI_API_KEY in ~/.zshrc.local; credentials are not stored in Git.

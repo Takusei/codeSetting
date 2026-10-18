@@ -8,7 +8,8 @@ on another machine. Keep this checkout in a stable location.
 ## Restore on macOS or Linux
 
 Install Python 3.9+ and the applications you want to configure first. This installer
-only manages config files; it does not install apps, plugins, fonts, or extensions.
+only manages config files. The separate shell dependency installer below installs
+Oh My Zsh, its theme and plugins; other apps, fonts, and extensions need separate setup.
 Native Windows / Git Bash installation is manual; WSL can use the Linux workflow.
 
 From the repository root, preview the default components:
@@ -60,11 +61,46 @@ VS Code Insiders, named profiles, and portable installations require manual setu
 Powerlevel10k. A commented-out literal API key was omitted, and optional
 `~/.zshrc.local` loading was added for machine-only settings and credentials.
 
-This snapshot preserves the original tool initialization and paths. Before using
-it on another machine, install its Oh My Zsh theme/plugins and review the OpenClaw
-completion path, local environment loader, and asdf Java setup. It also uses
-`~/.p10k.zsh` when available; the installer does not install that file.
-`shell/legacy/p10k.zsh` is an older saved copy.
+Install the shell dependencies before linking the config on a fresh machine:
+
+```sh
+# Preview (no downloads or changes)
+python3 scripts/install_shell.py
+# Install Oh My Zsh, Powerlevel10k, and all four external plugins
+python3 scripts/install_shell.py --apply
+# Or also install missing bat and eza through an existing Homebrew
+python3 scripts/install_shell.py --apply --brew-tools
+# Link the configuration, backing up any existing ~/.zshrc
+python3 scripts/install.py shell --apply
+```
+
+Requires Python 3.9+, Git, Zsh, and network access to GitHub when applying.
+The dependencies are [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh),
+[Powerlevel10k](https://github.com/romkatv/powerlevel10k),
+[zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions),
+[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting),
+[you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use), and
+[zsh-bat](https://github.com/fdellwing/zsh-bat). The `git` plugin comes with Oh My Zsh.
+The script uses `~/.oh-my-zsh/custom`, matching this repo's zshrc; custom `ZSH` or
+`ZSH_CUSTOM` environment values are not used.
+
+Existing installations are skipped without updating or replacing them. Conflicting
+paths stop installation for manual review. Downloads are staged before being moved
+into place; completed dependencies remain installed if a later download fails.
+Rerun to finish. New clones use the current upstream default branch, not pinned
+versions. The script does not change your login shell or replace `.zshrc`/`.p10k.zsh`.
+`--home /path/to/temporary-home` stages dependencies elsewhere; `--brew-tools` still
+installs tools through your system's Homebrew, so omit that flag for isolated staging.
+
+Without Homebrew, install `bat` and `eza` through your OS package manager. Some Linux
+packages name the executable `batcat`; zsh-bat needs `bat` on PATH. Optional Bun,
+Docker, OpenClaw, and local environment initialization is skipped when absent;
+these applications and asdf Java are not installed by this script.
+
+Open a new Zsh session and run `p10k configure` to create `~/.p10k.zsh` (an existing
+file is retained). For prompt icons, install and select a Nerd Font in your terminal;
+see the [Powerlevel10k font instructions](https://github.com/romkatv/powerlevel10k#fonts).
+`shell/legacy/p10k.zsh` remains an older reference, not an automatically installed preset.
 
 Copy `shell/local.zsh.example` to `~/.zshrc.local` for machine-specific PATH entries
 and credentials. Do not overwrite an existing local file.
@@ -105,6 +141,7 @@ tracked files or content from Git history.
 zsh -n shell/zshrc
 python3 -m unittest discover -s scripts -p 'test_*.py'
 python3 scripts/install.py --dry-run
+python3 scripts/install_shell.py --dry-run
 ```
 
 For an isolated installation, pass `--home /path/to/temporary-home`. This also
