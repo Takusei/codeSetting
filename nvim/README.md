@@ -1,4 +1,8 @@
-# 💤 LazyVim
+# Neovim / LazyVim
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+Personal LazyVim configuration. Restore with `python3 scripts/install.py nvim --apply`
+from the repository root. See [setup and dependencies](../docs/lazyvim.md).
+
+Keep `lazy-lock.json` tracked; use `:Lazy restore` to install recorded versions.
+Plugin downloads, caches, and runtime state do not belong in this directory.
+The starter license is retained in `LICENSE`.

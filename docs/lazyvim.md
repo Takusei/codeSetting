@@ -1,5 +1,10 @@
 # LazyVim Setup Guide (macOS + Ghostty)
 
+For the complete restore workflow, start with the [repository README](../README.md).
+The settings examples below explain customization; restoring the repo already
+provides its saved options. The Ghostty snippet is minimal; `ghostty/config` is
+the authoritative configuration.
+
 ## 1. Install Homebrew
 
 Check whether Homebrew is installed:
@@ -64,23 +69,18 @@ fd --version
 lazygit --version
 ```
 
-## 4. Install LazyVim
+## 4. Restore this repository's LazyVim configuration
 
-Back up existing Neovim configurations if they exist:
+From the repository root, preview and apply:
 
-```bash
-[ -d ~/.config/nvim ] && mv ~/.config/nvim ~/.config/nvim.backup
-[ -d ~/.local/share/nvim ] && mv ~/.local/share/nvim ~/.local/share/nvim.backup
-[ -d ~/.local/state/nvim ] && mv ~/.local/state/nvim ~/.local/state/nvim.backup
-[ -d ~/.cache/nvim ] && mv ~/.cache/nvim ~/.cache/nvim.backup
+```sh
+python3 scripts/install.py nvim --dry-run
+python3 scripts/install.py nvim --apply
 ```
 
-Clone the official LazyVim starter:
-
-```bash
-git clone https://github.com/LazyVim/starter ~/.config/nvim
-rm -rf ~/.config/nvim/.git
-```
+Existing configuration is backed up automatically. This links the saved config,
+including your custom options, theme and plugin lockfile. Do not clone a fresh
+starter over this destination.
 
 ## 5. Launch LazyVim
 
@@ -89,7 +89,8 @@ cd ~/workspace
 nvim .
 ```
 
-On the first launch, wait for the plugins to finish installing.
+On the first launch, wait for the plugins to finish installing. Run `:Lazy restore`
+to restore the versions recorded in the saved lockfile.
 
 Run the health checks inside Neovim:
 
@@ -138,7 +139,7 @@ The default leader key is `Space`.
 
 Some actions require an active language server or the relevant plugin.
 
-## 8. Enable mouse support
+## 8. Mouse support (already configured)
 
 Edit:
 
@@ -162,9 +163,10 @@ vim.opt.relativenumber = false
 
 Save and restart Neovim.
 
-## 9. Optional: Use Dracula in LazyVim
+## 9. Dracula theme reference
 
-Create a plugin configuration file:
+The saved config already includes Dracula. The following is an alternative
+configuration example, not a required restore step:
 
 ```bash
 mkdir -p ~/.config/nvim/lua/plugins
@@ -258,7 +260,8 @@ Inside Neovim:
 :Lazy
 ```
 
-Press `S` in the plugin manager to sync plugins.
+Use `:Lazy restore` to retry installation at the recorded versions.
+Use sync only when you intentionally want to update plugins and the lockfile.
 
 **File explorer disappeared**
 

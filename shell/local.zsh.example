@@ -1,0 +1,4 @@
+# Copy to ~/.zshrc.local; never commit your populated local file.
+# Add machine-specific tool initialization and paths here.
+# export PATH="$HOME/my-tools/bin:$PATH"
+# [[ ! -r "$HOME/.bun/_bun" ]] || source "$HOME/.bun/_bun"

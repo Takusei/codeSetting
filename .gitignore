@@ -1,0 +1,13 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+*.local
+*.local.zsh
+*.backup-*
+__pycache__/
+*.pyc
+# Full state exports may contain private session data. The existing tracked
+# legacy export remains preserved until it has been reviewed and retired.
+*.itermexport
+!iterm2/legacy-state.itermexport
